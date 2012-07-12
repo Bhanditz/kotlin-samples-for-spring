@@ -22,7 +22,8 @@ class UserBOImpl(): UserBO{
         userDAO?.delete(user);
     }
 
-    Autowired private var userDAO: UserDAO? = null
+    Autowired 
+    private var userDAO: UserDAO? = null
         public set
 
 }

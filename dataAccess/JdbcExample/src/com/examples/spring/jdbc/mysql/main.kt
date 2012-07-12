@@ -45,7 +45,7 @@ fun main(args: Array<String>) {
     /** delete **/
     val userForDelete = userBO.findById(start + 3)
     if (userForDelete == null) {
-        System.err.println("Impossible to find user with id " + start + 1)
+        System.err.println("Impossible to find user with id " + start + 3)
     } else {
         userBO.delete(userForDelete)
         System.out.println(userForDelete)
@@ -53,3 +53,4 @@ fun main(args: Array<String>) {
     }
 
 }
+

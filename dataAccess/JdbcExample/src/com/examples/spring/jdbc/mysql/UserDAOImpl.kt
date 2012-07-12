@@ -15,10 +15,10 @@ class UserDAOImpl(): CustomHibernateDAOSupport(), UserDAO {
     override fun delete(user: User){
         getHibernateTemplate()?.delete(user)
     }
-    public override fun findById(id: Int): User? {
+    
+    override fun findById(id: Int): User? {
         val list = getHibernateTemplate()?.find("from User where id=" + id)
         return if (list == null) null else list.get(0) as User?
     }
-
 
 }
