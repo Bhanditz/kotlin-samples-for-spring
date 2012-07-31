@@ -1,0 +1,2 @@
+All examples were written on kotlin.
+You can see original examples on java at https://github.com/SpringSource/spring-integration-samples
