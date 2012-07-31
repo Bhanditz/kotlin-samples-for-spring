@@ -1,0 +1,24 @@
+package com.examples.spring.basic.jdbc
+
+import java.util.List
+import org.springframework.stereotype.Repository
+
+Repository("userDAO")
+class UserDAOImpl(): CustomHibernateDAOSupport(), UserDAO {
+
+    override fun save(user: User) {
+        getHibernateTemplate()?.save(user)
+    }
+    override fun update(user: User) {
+        getHibernateTemplate()?.update(user)
+    }
+    override fun delete(user: User){
+        getHibernateTemplate()?.delete(user)
+    }
+    
+    override fun findById(id: Int): User? {
+        val list = getHibernateTemplate()?.find("from User where id=" + id)
+        return if (list == null) null else list.get(0) as User?
+    }
+
+}
