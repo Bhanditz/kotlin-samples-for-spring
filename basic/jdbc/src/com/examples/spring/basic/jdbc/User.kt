@@ -8,7 +8,6 @@ import javax.persistence.*;
 import javax.persistence.GenerationType.IDENTITY;
 import java.io.Serializable
 
-// uniqueConstraints = UniqueConstraint(columnNames = "id")
 // uniqueConstraints = array(UniqueConstraint(columnNames = array("id")))
 Entity
 Table(name = "User")

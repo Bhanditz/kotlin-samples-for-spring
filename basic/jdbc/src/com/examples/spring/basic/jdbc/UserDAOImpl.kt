@@ -1,10 +1,12 @@
 package com.examples.spring.basic.jdbc
 
-import java.util.List
-import org.springframework.stereotype.Repository
+import org.hibernate.SessionFactory
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport
+import org.springframework.stereotype.Service
 
-Repository("userDAO")
-class UserDAOImpl(): CustomHibernateDAOSupport(), UserDAO {
+Service("userDAO")
+class UserDAOImpl(): HibernateDaoSupport(), UserDAO {
 
     override fun save(user: User) {
         getHibernateTemplate()?.save(user)
@@ -18,7 +20,12 @@ class UserDAOImpl(): CustomHibernateDAOSupport(), UserDAO {
     
     override fun findById(id: Int): User? {
         val list = getHibernateTemplate()?.find("from User where id=" + id)
-        return if(list == null || list.isEmpty()) null else list.first as User?
+        return if(list == null || list.isEmpty()) null else list.first() as User?
+    }
+
+    Autowired
+    public fun anyMethodName(sessionFactory: SessionFactory) {
+        setSessionFactory(sessionFactory)
     }
 
 }
