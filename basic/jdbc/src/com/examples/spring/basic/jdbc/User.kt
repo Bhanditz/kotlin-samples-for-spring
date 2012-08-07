@@ -8,7 +8,7 @@ import javax.persistence.*;
 import javax.persistence.GenerationType.IDENTITY;
 import java.io.Serializable
 
-// TODO uniqueConstraints = UniqueConstraint(columnNames = "id")
+// uniqueConstraints = UniqueConstraint(columnNames = "id")
 // uniqueConstraints = array(UniqueConstraint(columnNames = array("id")))
 Entity
 Table(name = "User")
@@ -29,7 +29,7 @@ public class User(): Serializable {
         get
 
     override public fun toString(): String {
-        return "User [id=" + id + ", name=" + name + ", age=" + age + "]";
+        return "User [id=$id, name=$name, age=$age]";
     }
     
 }

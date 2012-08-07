@@ -18,7 +18,7 @@ class UserDAOImpl(): CustomHibernateDAOSupport(), UserDAO {
     
     override fun findById(id: Int): User? {
         val list = getHibernateTemplate()?.find("from User where id=" + id)
-        return if (list == null) null else list.get(0) as User?
+        return if(list == null || list.isEmpty()) null else list.first as User?
     }
 
 }

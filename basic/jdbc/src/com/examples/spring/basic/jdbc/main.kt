@@ -1,56 +1,77 @@
 package com.examples.spring.basic.jdbc
 
 import org.springframework.context.support.ClassPathXmlApplicationContext
+import java.util.Random
 
 /**
  * @author Natalia.Ukhorskaya
  */
 
+val userBO: UserBO
+    get() {
+        val appContext = ClassPathXmlApplicationContext("/jdbc_example.xml")
+        return appContext.getBean("userBO") as UserBO
+    }
+
 fun main(args: Array<String>) {
-    val appContext = ClassPathXmlApplicationContext("/jdbc_example.xml")
+    var currentId = 0
 
-    val userBO = appContext.getBean("userBO") as UserBO
-
-    var start = 0
-    /** insert **/
     for(i in 0..5) {
-        val newUser = User()
-        newUser.name = "Mark"
-        newUser.age = 15
-        userBO.save(newUser)
-        System.out.println(newUser)
+        val id = addUser()
         if (i == 0) {
-            start = newUser.id
+            currentId = id
         }
     }
 
-    /** select **/
-    val userForFind = userBO.findById(start + 1)
+    selectUser(currentId)
+
+    currentId++
+
+    updateUser(currentId, "Kurt", 15)
+
+    currentId++
+
+    deleteUser(currentId)
+}
+
+fun addUser(): Int {
+    val newUser = User()
+    newUser.name = "Mark"
+    newUser.age = Random().nextInt(100)
+    userBO.save(newUser)
+    println("Create: $newUser")
+    return newUser.id
+}
+
+fun selectUser(id: Int) {
+    val userForFind = userBO.findById(id)
     if (userForFind == null) {
-        System.err.println("Impossible to find user with id " + start + 1)
+        println("Cannot find user with id $id")
     }
-    System.out.println(userForFind)
+    println("Select: $userForFind")
+}
 
-    /** update **/
-    val userForUpdate = userBO.findById(start + 2)
+fun updateUser(id: Int, newName: String, newAge: Int) {
+    val userForUpdate = userBO.findById(id)
+    println("Before update: $userForUpdate")
     if (userForUpdate == null) {
-        System.err.println("Impossible to find user with id " + start + 2)
+        println("Cannot find user with id $id")
     } else {
-        userForUpdate.name = "Kurt"
+        userForUpdate.name = newName
+        userForUpdate.age = newAge
         userBO.update(userForUpdate)
-        System.out.println(userForUpdate)
     }
+    println("After update: $userForUpdate")
+}
 
-
-    /** delete **/
-    val userForDelete = userBO.findById(start + 3)
+fun deleteUser(id: Int) {
+    val userForDelete = userBO.findById(id)
+    println("Before delete: $userForDelete")
     if (userForDelete == null) {
-        System.err.println("Impossible to find user with id " + start + 3)
+        println("Cannot find user with id $id")
     } else {
         userBO.delete(userForDelete)
-        System.out.println(userForDelete)
-
     }
-
+    println("After delete: ${userBO.findById(id) ?: "Cannot find user with id $id"}")
 }
 

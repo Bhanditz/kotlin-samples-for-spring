@@ -8,18 +8,18 @@ import org.springframework.stereotype.Service;
  */
 
 Service("userBO")
-class UserBOImpl(): UserBO{
+class UserBOImpl(): UserBO {
     override fun update(user: User) {
-        userDAO?.update(user);
+        userDAO?.update(user)
     }
     override fun findById(id: Int): User? {
-        return userDAO?.findById(id);
+        return userDAO?.findById(id)
     }
     override fun save(user: User) {
-        userDAO?.save(user);
+        userDAO?.save(user)
     }
     override fun delete(user: User) {
-        userDAO?.delete(user);
+        userDAO?.delete(user)
     }
 
     Autowired 
