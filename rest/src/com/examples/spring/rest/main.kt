@@ -1,6 +1,7 @@
 package com.examples.spring.rest
 
 import java.net.URL
+import org.springframework.web.client.RestTemplate
 
 /**
 * User: Natalia.Ukhorskaya

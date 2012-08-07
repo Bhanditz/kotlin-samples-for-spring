@@ -7,6 +7,9 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OUTPUT_DIRECTORY" value="C:\Development\kotlin-samples-for-spring\rest\exportToHTML" />
+  </component>
   <component name="IdProvider" IDEtalkID="E8AE5FB05A1232393A11D78CCEE50F8E" />
   <component name="ProjectResources">
     <default-html-doctype>http://www.w3.org/1999/xhtml</default-html-doctype>

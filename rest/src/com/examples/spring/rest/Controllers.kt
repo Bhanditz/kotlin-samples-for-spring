@@ -10,9 +10,10 @@ Controller
 RequestMapping(array("/message"))
 public class MessageController() {
 
-    RequestMapping(value=array("/{message}"), method = array(RequestMethod.GET))
+    RequestMapping(value = array("/{message}"), method = array(RequestMethod.GET))
     public fun getMessage(PathVariable message: String, model: ModelMap): String {
-        model.addAttribute("message", message)
+        //TODO check that [] do the same as setAttribute
+        model["message"] = message
         return "message"
     }
 }
@@ -21,10 +22,10 @@ Controller
 RequestMapping(array("/user"))
 public class UserController() {
 
-    RequestMapping(value=array("/{firstName}/{lastName}"), method = array(RequestMethod.GET))
+    RequestMapping(value = array("/{firstName}/{lastName}"), method = array(RequestMethod.GET))
     public fun getUser(PathVariable firstName: String, PathVariable lastName: String, model: ModelMap): String {
-        model.addAttribute("firstname", firstName)
-        model.addAttribute("lastname", lastName)
+        model["firstname"] = firstName
+        model["lastname"] = lastName
         return "user"
     }
 }
