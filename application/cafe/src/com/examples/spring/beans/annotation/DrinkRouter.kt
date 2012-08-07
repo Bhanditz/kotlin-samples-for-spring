@@ -12,7 +12,7 @@ MessageEndpoint
 public class DrinkRouter {
 
     Router(inputChannel="drinks")
-    public fun resolveOrderItemChannel(val orderItem: OrderItem): String {
+    public fun resolveOrderItemChannel(orderItem: OrderItem): String {
         return if (orderItem.iced) "coldDrinks" else "hotDrinks"
     }
 

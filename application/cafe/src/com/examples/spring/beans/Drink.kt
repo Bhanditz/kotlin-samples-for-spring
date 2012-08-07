@@ -7,7 +7,7 @@ package com.examples.spring.beans
 
 class Drink(var orderNumber: Int, var drinkType: DrinkType, var iced: Boolean, var shots: Int) {
     fun toString(): String {
-        return (if (iced) "Iced" else "Hot")  + " " + drinkType.toString() + ", " + shots + " shots." 
+        return "${if (iced) "Iced " else "Hot "} $drinkType, ${this.shots} shots."
     }
 }
 

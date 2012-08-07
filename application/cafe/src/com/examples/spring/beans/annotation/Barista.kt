@@ -13,41 +13,33 @@ import org.springframework.stereotype.Component
 
 Component
 class Barista() {
-    private var hotDrinkDelay: Long = 5000
-        public set
-
-    private var coldDrinkDelay: Long = 1000
-        public set
+    private val hotDrinkDelay: Long = 1000
+    private val coldDrinkDelay: Long = 500
 
     private val hotDrinkCounter: AtomicInteger = AtomicInteger();
     private val coldDrinkCounter: AtomicInteger = AtomicInteger();
 
-    ServiceActivator(inputChannel="hotDrinkBarista", outputChannel="preparedDrinks")
+    ServiceActivator(inputChannel = "hotDrinkBarista", outputChannel = "preparedDrinks")
     public fun prepareHotDrink(orderItem: OrderItem): Drink? {
+        return prepareDrink(orderItem)
+    }
+
+    ServiceActivator(inputChannel = "coldDrinkBarista", outputChannel = "preparedDrinks")
+    public fun prepareColdDrink(orderItem: OrderItem): Drink? {
+        return prepareDrink(orderItem)
+    }
+
+    fun prepareDrink(orderItem: OrderItem): Drink? {
         try {
-            Thread.sleep(hotDrinkDelay);
-            System.out.println(Thread.currentThread()?.getName()
-                + " prepared hot drink #" + hotDrinkCounter.incrementAndGet() + " for order #"
-                + orderItem.orderNumber + ": " + orderItem)
+            if (orderItem.iced) Thread.sleep(coldDrinkDelay) else Thread.sleep(hotDrinkDelay)
+            println("${Thread.currentThread().getName()} prepared ${ if (orderItem.iced) "cold" else "hot" } drink #${hotDrinkCounter.incrementAndGet()} "
+                        +"for order #${orderItem.orderNumber}: $orderItem")
             return Drink(orderItem.orderNumber, orderItem.drinkType, orderItem.iced, orderItem.shots)
         } catch (e: InterruptedException) {
-            Thread.currentThread()?.interrupt();
+            Thread.currentThread().interrupt();
             return null
         }
     }
 
-    ServiceActivator(inputChannel="coldDrinkBarista", outputChannel="preparedDrinks")
-    public fun prepareColdDrink(orderItem: OrderItem): Drink? {
-        try {
-            Thread.sleep(coldDrinkDelay);
-            System.out.println(Thread.currentThread()?.getName()
-                + " prepared cold drink #" + hotDrinkCounter.incrementAndGet() + " for order #"
-                + orderItem.orderNumber + ": " + orderItem)
-            return Drink(orderItem.orderNumber, orderItem.drinkType, orderItem.iced, orderItem.shots)
-        } catch (e: InterruptedException) {
-            Thread.currentThread()?.interrupt();
-            return null
-        }
-    }
 
 }
