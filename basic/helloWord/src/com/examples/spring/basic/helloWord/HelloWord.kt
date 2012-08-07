@@ -20,6 +20,6 @@ fun main(args: Array<String>) {
     val inputChannel = context.getBean("inputChannel", javaClass<MessageChannel>()) as MessageChannel
     val outputChannel = context.getBean("outputChannel", javaClass<PollableChannel>()) as PollableChannel
     inputChannel.send(GenericMessage<String>("guest"))
-    println("Output: " + outputChannel.receive(0)?.getPayload());
+    println("Output: ${outputChannel.receive()?.getPayload()}")
 }
  
