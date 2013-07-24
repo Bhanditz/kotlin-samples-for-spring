@@ -7,13 +7,11 @@ import java.util.ArrayList
  * User: Natalia.Ukhorskaya
  */
 
-class Main() {
-
-}
+class Main
 
 fun main(args: Array<String>) {
     prepare()
-    val configFiles = array<String?>("/common.xml", "/inboundGateway.xml", "/outboundGateway.xml")
+    val configFiles = array<String>("/common.xml", "/inboundGateway.xml", "/outboundGateway.xml")
     ClassPathXmlApplicationContext(configFiles, javaClass<Main>())
-    System.out.println("Please type something and hit return")
+    println("Please type something and hit return")
 }

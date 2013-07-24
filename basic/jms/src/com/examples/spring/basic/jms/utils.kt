@@ -7,19 +7,16 @@ import java.io.File
  */
 
 fun prepare(): Unit {
-    System.out.println("####### Refreshing ActiveMq ########")
+    println("####### Refreshing ActiveMq ########")
     val activeMqTempDir = File("activemq-data")
     deleteDir(activeMqTempDir)
 }
 
 private fun deleteDir(directory: File?): Unit {
-    if (directory?.exists().sure())
-    {
+    if (directory?.exists()!!) {
         val children = directory?.list()
         if (children != null) {
-            for (i in 0..children.size - 1) {
-                deleteDir(File(directory, children[i]))
-            }
+            children.forEach { deleteDir(File(directory, it)) }
         }
     }
 
