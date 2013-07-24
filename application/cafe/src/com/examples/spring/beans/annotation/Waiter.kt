@@ -4,8 +4,6 @@ package com.examples.spring.beans.annotation
  * @author Natalia.Ukhorskaya
  */
 
-import java.util.List;
-
 import org.springframework.integration.annotation.Aggregator;
 import org.springframework.integration.annotation.CorrelationStrategy;
 import org.springframework.integration.annotation.MessageEndpoint;

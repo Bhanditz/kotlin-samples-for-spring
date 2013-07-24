@@ -4,8 +4,6 @@ package com.examples.spring.beans.annotation
  * @author Natalia.Ukhorskaya
  */
 
-import java.util.List;
-
 import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.Splitter;
 import com.examples.spring.beans.Order;
