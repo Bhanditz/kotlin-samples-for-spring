@@ -19,9 +19,9 @@
     </content>
     <orderEntry type="jdk" jdkName="1.6" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Kotlin 0.1 (bundled)" level="application" />
     <orderEntry type="library" name="KotlinRuntime" level="project" />
-    <orderEntry type="library" name="project libs" level="project" />
+    <orderEntry type="library" name="javaee" level="project" />
+    <orderEntry type="library" name="project-libs" level="project" />
     <orderEntry type="library" name="spring" level="project" />
   </component>
 </module>
