@@ -4,11 +4,10 @@ import java.util.Random
 
 public class MathService() {
     private val random = Random()
-    public fun multiplyByTwo(i: Int): Int {
+
+    fun multiplyByTwo(i: Int): Int {
         val sleep = (random.nextInt(10)) * 500
         Thread.sleep(sleep.toLong())
         return i * 2
     }
-
-
 }
