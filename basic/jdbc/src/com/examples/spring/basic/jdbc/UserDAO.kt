@@ -4,7 +4,7 @@ package com.examples.spring.basic.jdbc
  * @author Natalia.Ukhorskaya
  */
 
-trait UserDAO {
+interface UserDAO {
     fun save(user: User)
     fun update(user: User)
     fun delete(user: User)

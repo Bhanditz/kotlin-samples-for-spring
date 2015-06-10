@@ -14,17 +14,17 @@ Table(name = "User")
 public class User(): Serializable {
 
     public var id: Int = 0
-        [Id
-        GeneratedValue(strategy = GenerationType.IDENTITY)
-        Column(name = "id", unique = true, nullable = false)]
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id", unique = true, nullable = false)
         get
 
     public var name: String = ""
-        [Column(name = "name", unique = false, nullable = false, length = 40)]
+        @Column(name = "name", unique = false, nullable = false, length = 40)
         get
 
     public var age: Int = 18
-        [Column(name = "age", unique = false, nullable = false)]
+        @Column(name = "age", unique = false, nullable = false)
         get
 
     override public fun toString(): String {
