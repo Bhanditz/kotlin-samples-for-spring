@@ -12,8 +12,8 @@ class Drink(var orderNumber: Int, var drinkType: DrinkType, var iced: Boolean, v
 }
 
 enum class DrinkType {
-    ESPRESSO
-    LATTE
-    CAPPUCCINO
+    ESPRESSO,
+    LATTE,
+    CAPPUCCINO,
     MOCHA
 }
