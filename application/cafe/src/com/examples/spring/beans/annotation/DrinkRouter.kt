@@ -8,10 +8,10 @@ import com.examples.spring.beans.OrderItem
  * @author Natalia.Ukhorskaya
  */
 
-MessageEndpoint
+@MessageEndpoint
 public class DrinkRouter {
 
-    Router(inputChannel="drinks")
+    @Router(inputChannel="drinks")
     public fun resolveOrderItemChannel(orderItem: OrderItem): String {
         return if (orderItem.iced) "coldDrinks" else "hotDrinks"
     }

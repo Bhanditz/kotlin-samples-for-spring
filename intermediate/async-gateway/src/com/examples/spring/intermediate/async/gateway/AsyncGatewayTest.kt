@@ -12,7 +12,7 @@ private val timeout = 20
 
 fun main(args: Array<String>) {
     val ac: ApplicationContext? = FileSystemXmlApplicationContext("/math-service-config.xml")
-    val mathService = ac?.getBean("mathService", javaClass<MathServiceGateway>()) as MathServiceGateway
+    val mathService = ac?.getBean("mathService", MathServiceGateway::class.java) as MathServiceGateway
     val results = HashMap<Int, Future<Int>>()
     val random = Random()
     for (i in 0..50) {
@@ -42,16 +42,16 @@ fun processFuture(resultEntry: Map.Entry<Int, Future<Int>>): IntArray {
     val result = resultEntry.getValue()
     try {
         val finalResult = result.get(timeout.toLong(), TimeUnit.SECONDS)
-        return intArray(originalNumber, finalResult)
+        return intArrayOf(originalNumber, finalResult)
     }
     catch (e: ExecutionException) {
-        return intArray(originalNumber, -1)
+        return intArrayOf(originalNumber, -1)
     }
     catch (tex: TimeoutException) {
-        return intArray(originalNumber, -2)
+        return intArrayOf(originalNumber, -2)
     }
     catch (ex: Exception) {
         println()
-        return intArray(originalNumber, -2)
+        return intArrayOf(originalNumber, -2)
     }
 }

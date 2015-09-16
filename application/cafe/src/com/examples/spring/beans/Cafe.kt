@@ -7,6 +7,6 @@ package com.examples.spring.beans
 import org.springframework.integration.annotation.Gateway;
 
 interface Cafe {
-    Gateway(requestChannel = "orders")
+    @Gateway(requestChannel = "orders")
     fun placeOrder(order: Order)
 }

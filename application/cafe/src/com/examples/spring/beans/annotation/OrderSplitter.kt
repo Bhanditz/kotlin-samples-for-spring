@@ -13,10 +13,10 @@ import com.examples.spring.beans.OrderItem;
  * @author Mark Fisher
  */
 
-MessageEndpoint
+@MessageEndpoint
 public class OrderSplitter {
 
-    Splitter(inputChannel="orders", outputChannel="drinks")
+    @Splitter(inputChannel="orders", outputChannel="drinks")
     public fun split(order: Order): List<OrderItem> {
         return order.items;
     }

@@ -3,10 +3,10 @@ package com.examples.spring.basic.jms
 import org.springframework.integration.annotation.MessageEndpoint
 import org.springframework.integration.annotation.ServiceActivator
 
-MessageEndpoint
+@MessageEndpoint
 class DemoBean() {
 
-    ServiceActivator
+    @ServiceActivator
     fun upperCase(input: String): String {
         return "JMS response: " + input.toUpperCase()
     }

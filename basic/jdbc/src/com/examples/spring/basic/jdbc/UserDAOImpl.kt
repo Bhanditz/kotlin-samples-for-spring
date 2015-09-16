@@ -5,25 +5,25 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport
 import org.springframework.stereotype.Service
 
-Service("userDAO")
+@Service("userDAO")
 class UserDAOImpl(): HibernateDaoSupport(), UserDAO {
 
     override fun save(user: User) {
-        getHibernateTemplate()?.save(user)
+        hibernateTemplate?.save(user)
     }
     override fun update(user: User) {
-        getHibernateTemplate()?.update(user)
+        hibernateTemplate?.update(user)
     }
     override fun delete(user: User){
-        getHibernateTemplate()?.delete(user)
+        hibernateTemplate?.delete(user)
     }
     
     override fun findById(id: Int): User? {
-        val list = getHibernateTemplate()?.find("from User where id=" + id)
+        val list = hibernateTemplate?.find("from User where id=" + id)
         return if(list == null || list.isEmpty()) null else list.first() as User?
     }
 
-    Autowired
+    @Autowired
     public fun anyMethodName(sessionFactory: SessionFactory) {
         setSessionFactory(sessionFactory)
     }

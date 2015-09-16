@@ -10,15 +10,15 @@ import org.springframework.integration.annotation.MessageEndpoint;
 import com.examples.spring.beans.Delivery;
 import com.examples.spring.beans.Drink;
 
-MessageEndpoint
+@MessageEndpoint
 public class Waiter {
 
-    Aggregator(inputChannel = "preparedDrinks", outputChannel = "deliveries")
+    @Aggregator(inputChannel = "preparedDrinks", outputChannel = "deliveries")
     public fun prepareDelivery(drinks: List<Drink>): Delivery {
         return Delivery(drinks);
     }
 
-    CorrelationStrategy
+    @CorrelationStrategy
     public fun correlateByOrderNumber(drink: Drink): Int {
         return drink.orderNumber
     }

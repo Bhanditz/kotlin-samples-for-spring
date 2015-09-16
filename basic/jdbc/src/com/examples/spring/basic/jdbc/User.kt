@@ -9,8 +9,8 @@ import javax.persistence.GenerationType.IDENTITY;
 import java.io.Serializable
 
 // uniqueConstraints = array(UniqueConstraint(columnNames = array("id")))
-Entity
-Table(name = "User")
+@Entity
+@Table(name = "User")
 public class User(): Serializable {
 
     public var id: Int = 0
