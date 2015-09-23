@@ -7,7 +7,7 @@ package com.examples.spring.beans
 class Delivery(private val deliveredDrinks: List<Drink>) {
 
     override fun toString(): String {
-        return deliveredDrinks.makeString(separator = "\n",
+        return deliveredDrinks.joinToString(separator = "\n",
                                           prefix = "\nOrder #${deliveredDrinks.first().orderNumber}\n",
                                           postfix = "\n-----------------------\n")
     }

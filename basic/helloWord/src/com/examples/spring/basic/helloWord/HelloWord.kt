@@ -17,8 +17,8 @@ class HelloService() {
 
 fun main(args: Array<String>) {
     val context = ClassPathXmlApplicationContext("/helloWorld.xml")
-    val inputChannel = context.getBean("inputChannel", javaClass<MessageChannel>()) as MessageChannel
-    val outputChannel = context.getBean("outputChannel", javaClass<PollableChannel>()) as PollableChannel
+    val inputChannel = context.getBean("inputChannel", MessageChannel::class.java) as MessageChannel
+    val outputChannel = context.getBean("outputChannel", PollableChannel::class.java) as PollableChannel
     inputChannel.send(GenericMessage<String>("guest"))
     println("Output: ${outputChannel.receive()?.getPayload()}")
 }

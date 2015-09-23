@@ -11,7 +11,7 @@ class Main
 
 fun main(args: Array<String>) {
     prepare()
-    val configFiles = array<String>("/common.xml", "/inboundGateway.xml", "/outboundGateway.xml")
-    ClassPathXmlApplicationContext(configFiles, javaClass<Main>())
+    val configFiles = arrayOf("/common.xml", "/inboundGateway.xml", "/outboundGateway.xml")
+    ClassPathXmlApplicationContext(configFiles, Main::class.java)
     println("Please type something and hit return")
 }
