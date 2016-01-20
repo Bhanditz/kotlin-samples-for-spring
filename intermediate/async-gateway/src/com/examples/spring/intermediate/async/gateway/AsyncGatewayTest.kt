@@ -20,7 +20,7 @@ fun main(args: Array<String>) {
         val result = mathService.multiplyByTwo(number)
         results.put(number, result)
     }
-    for (resultEntry in results.entrySet()) {
+    for (resultEntry in results.entries) {
         executor.execute(object : Runnable {
             public override fun run() {
                 val result = processFuture(resultEntry)
@@ -38,8 +38,8 @@ fun main(args: Array<String>) {
 }
 
 fun processFuture(resultEntry: Map.Entry<Int, Future<Int>>): IntArray {
-    val originalNumber = resultEntry.getKey()
-    val result = resultEntry.getValue()
+    val originalNumber = resultEntry.key
+    val result = resultEntry.value
     try {
         val finalResult = result.get(timeout.toLong(), TimeUnit.SECONDS)
         return intArrayOf(originalNumber, finalResult)
